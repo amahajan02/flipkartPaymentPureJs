@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <title>Flipkart</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <link href="./style.css" rel="stylesheet" />
+
+    <script src="./main.js"></script>
+</head>
+
+<body>
+    <div class="container payment-container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card payment-options">
+                    <div class="payment-options__header">Payment options</div>
+                    <div class="accordion" id="paymentOptionsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <div class="d-flex accordion-button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                                    onclick="accordionSelected('phonePeOption')">
+                                    <input id="phonePeOption" name="paymentOp" type="radio" value="phonePe" checked
+                                        onChange="calculateDiscount()" />
+                                    <label for="phonePeOption">PhonePe</label>
+                                </div>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#paymentOptionsAccordion">
+                                <div class="accordion-body">
+                                    <div class="fw-bold">You will be redirected to PhonePe page, where you can pay using
+                                        UPI, credit/debit card or walllet</div>
+                                    <button class="continue-button" onclick="alertAmount()">Continue</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <div class="d-flex accordion-button" data-bs-toggle="collapse"
+                                    onclick="accordionSelected('creditCardOption')" data-bs-target="#collapseTwo"
+                                    aria-expanded="true" aria-controls="collapseTwo">
+                                    <input id="creditCardOption" name="paymentOp" type="radio" value="credit"
+                                        onChange="calculateDiscount()" />
+                                    <label for="creditCardOption">Credit/Debit/ATM Card</label>
+                                </div>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#paymentOptionsAccordion">
+                                <div class="accordion-body">
+                                    <div class="d-flex">
+                                        <select style="margin-right: 20px;" id="issuingAuthority"
+                                            onChange="calculateDiscount()">
+                                            <option class="dropdown-item">Master Card</option>
+                                            <option class="dropdown-item">VISA</option>
+                                        </select>
+                                        <select id="bankName" onChange="calculateDiscount()">
+                                            <option class="dropdown-item">HDFC</option>
+                                            <option class="dropdown-item">SBI</option>
+                                        </select>
+                                    </div>
+                                    <button class="continue-button" onclick="alertAmount()">Continue</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <div class="d-flex accordion-button" data-bs-toggle="collapse"
+                                    onclick="accordionSelected('codOption')" data-bs-target="#collapseThree"
+                                    aria-expanded="true" aria-controls="collapseThree">
+                                    <input id="codOption" name="paymentOp" type="radio" value="cod"
+                                        onChange="calculateDiscount()" />
+                                    <label for="codOption">Cash on Delivery</label>
+                                </div>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#paymentOptionsAccordion">
+                                <div class="accordion-body">
+                                    <button class="continue-button" onclick="alertAmount()">Continue</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card price-details">
+                    <div class="price-details__header">Price Details</div>
+                    <div class="price-details__content">
+                        <div class="price-details__breakup">
+                        </div>
+                        <div class="price-details__footer">
+                            <span>Amount Payable</span>
+                            <span id="netAmount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
